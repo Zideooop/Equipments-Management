@@ -1,0 +1,326 @@
+/* 页面容器样式 */
+.container {
+  padding: 20rpx;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 页面标题 */
+.page-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  margin: 30rpx 0 40rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+/* 表单容器 */
+.form-container {
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 30rpx 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 表单组样式 */
+.form-group {
+  display: flex;
+  margin-bottom: 30rpx;
+  align-items: flex-start;
+}
+
+/* 行内表单组（用于编号和扫码按钮） */
+.inline-group {
+  align-items: center;
+}
+
+/* 表单标签 */
+.form-label {
+  width: 160rpx;
+  font-size: 28rpx;
+  color: #333;
+  padding-top: 15rpx;
+  flex-shrink: 0;
+}
+
+/* 输入框样式 */
+.form-input {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  background-color: #fafafa;
+}
+
+/* 缩短的编号输入框 */
+.short-input {
+  width: 300rpx;
+  flex: none;
+  border-radius: 12rpx;
+  box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.03);
+  border-color: #e5e5e5;
+}
+
+/* 行内输入组 */
+.inline-input-group {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+  flex: 1;
+}
+
+/* 扫码按钮 */
+.scan-btn {
+  height: 80rpx;
+  line-height: 80rpx;
+  background-color: #1677ff;
+  color: white;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  padding: 0 20rpx;
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  box-shadow: 0 2rpx 5rpx rgba(22, 119, 255, 0.2);
+  border: none;
+}
+
+.scan-btn .iconfont {
+  font-size: 28rpx;
+}
+
+/* 选择器容器 */
+.picker-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+}
+
+/* 选择器样式 */
+.form-picker {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 选择器视图 */
+.picker-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.picker-view .icon-arrow-down {
+  color: #999;
+  font-size: 24rpx;
+}
+
+/* 添加类型按钮 */
+.add-type-btn {
+  height: 80rpx;
+  padding: 0 15rpx;
+  border-radius: 8rpx;
+  background-color: #f0f0f0;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rpx;
+  font-size: 26rpx;
+  border: none;
+}
+
+/* 状态选择器 */
+.status-selector {
+  flex: 1;
+  display: flex;
+  gap: 30rpx;
+  padding-top: 10rpx;
+}
+
+.status-option {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.status-option.active {
+  color: #1677ff;
+}
+
+.status-selector radio {
+  transform: scale(0.8);
+  margin-right: 5rpx;
+}
+
+.status-selector radio[checked] .wx-radio-input {
+  border-color: #1677ff !important;
+  background-color: #1677ff !important;
+}
+
+/* 文本域样式 */
+.form-textarea {
+  flex: 1;
+  min-height: 150rpx;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  background-color: #fafafa;
+  line-height: 1.5;
+}
+
+/* 按钮组样式 - 优化排版 */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20rpx; /* 统一按钮间距 */
+  padding: 10rpx 0;
+}
+
+/* 主按钮组 */
+.primary-buttons {
+  margin-top: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+/* 次要按钮组（删除按钮） */
+.secondary-buttons {
+  margin-bottom: 20rpx;
+}
+
+/* 统一按钮样式 */
+.action-btn {
+  flex: 1; /* 平均分配宽度 */
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx; /* 图标与文字间距 */
+  transition: all 0.2s ease;
+  max-width: 300rpx; /* 限制最大宽度 */
+}
+
+/* 重置按钮 */
+.reset-btn {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.reset-btn:active {
+  background-color: #e8e8e8;
+  transform: scale(0.98);
+}
+
+/* 提交/更新按钮 */
+.submit-btn {
+  background-color: #1677ff;
+  color: white;
+}
+
+.submit-btn:active {
+  background-color: #0e68e0;
+  transform: scale(0.98);
+}
+
+/* 删除按钮 - 与其他按钮保持相同大小 */
+.delete-btn {
+  background-color: #f53f3f;
+  color: white;
+  width: 100%; /* 占满一行 */
+  max-width: none;
+}
+
+.delete-btn:active {
+  background-color: #e03232;
+  transform: scale(0.98);
+}
+
+/* 弹窗样式 */
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-dialog {
+  position: fixed;
+  width: 600rpx;
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.modal-input {
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 20rpx;
+}
+
+.modal-btn {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.cancel-btn {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.confirm-btn {
+  background-color: #1677ff;
+  color: white;
+}
+    

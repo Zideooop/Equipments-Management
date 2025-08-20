@@ -1,0 +1,160 @@
+/* app.wxss */
+/* 颜色变量 - 菜鸟蓝和微信绿主题 */
+:root {
+  --primary-color: #1677ff;     /* 菜鸟蓝主色调 */
+  --secondary-color: #07c160;   /* 微信绿辅助色 */
+  --warning-color: #faad14;     /* 警告色：黄色 */
+  --danger-color: #ff4d4f;      /* 危险色：红色 */
+  --text-primary: #333;         /* 主要文字 */
+  --text-secondary: #666;       /* 次要文字 */
+  --text-tertiary: #999;        /* 第三级文字 */
+  --bg-color: #f5f7fa;          /* 背景色 */
+  --card-bg: #fff;              /* 卡片背景 */
+  --border-color: #eee;         /* 边框颜色 */
+  --spacing-xs: 10rpx;          /* 超小间距 */
+  --spacing-sm: 20rpx;          /* 小间距 */
+  --spacing-md: 30rpx;          /* 中间距 */
+  --spacing-lg: 40rpx;          /* 大间距 */
+  --border-radius: 8rpx;        /* 圆角 */
+  --border-radius-lg: 16rpx;    /* 大圆角 */
+  --shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06); /* 阴影 */
+}
+
+/* 基础样式重置 - 移除通配符选择器 */
+view, text, image, button, input, checkbox, radio, slider, picker, picker-view, scroll-view, swiper, switch, textarea {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+page {
+  background-color: var(--bg-color);
+  font-size: 28rpx;
+  color: var(--text-primary);
+  min-height: 100%;
+}
+
+/* 统一按钮样式 - 增强交互反馈，修复颜色对比度 */
+.btn {
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: var(--border-radius);
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #fff; /* 确保文字默认白色 */
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:active {
+  background-color: #0e68e0;
+  transform: scale(0.98);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-secondary:active {
+  background-color: #06b054;
+  transform: scale(0.98);
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn-danger:active {
+  background-color: #e04344;
+  transform: scale(0.98);
+}
+
+.btn-text {
+  background-color: transparent;
+  color: var(--primary-color); /* 文字颜色与背景不同 */
+}
+
+.btn-text:active {
+  background-color: rgba(22, 119, 255, 0.1);
+}
+
+/* 卡片样式 - 增加悬停效果 */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 标题样式 */
+.title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+/* 列表项样式 - 增强交互 */
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1rpx solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.list-item:active {
+  background-color: rgba(22, 119, 255, 0.05);
+}
+
+/* 标签样式优化 */
+.tag {
+  padding: 4rpx 16rpx;
+  border-radius: 16rpx;
+  font-size: 24rpx;
+}
+
+.tag-success {
+  background-color: rgba(7, 193, 96, 0.15);
+  color: var(--secondary-color);
+}
+
+.tag-warning {
+  background-color: #fff7e6;
+  color: var(--warning-color);
+}
+
+.tag-danger {
+  background-color: #ffe8e8;
+  color: var(--danger-color);
+}
+
+/* 平滑滚动 */
+::-webkit-scrollbar {
+  width: 6rpx;
+  height: 6rpx;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(22, 119, 255, 0.3);
+  border-radius: 3rpx;
+}

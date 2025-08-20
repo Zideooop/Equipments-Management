@@ -1,0 +1,359 @@
+/* 基础样式 */
+page {
+  background-color: #f5f7fa;
+  padding-bottom: 120rpx; /* 为底部导航栏留出空间 */
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 头部样式 */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx 0;
+  background-color: #1677ff;
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  margin-bottom: 20rpx;
+  border-radius: 50%;
+  background-color: white;
+  padding: 10rpx;
+}
+
+.title {
+  font-size: 36rpx;
+  color: white;
+  font-weight: bold;
+}
+
+/* 统计卡片样式 */
+.stats-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 20rpx;
+  gap: 20rpx;
+}
+
+.stat-card {
+  flex: 1;
+  background-color: white;
+  border-radius: 16rpx;
+  padding: 25rpx 15rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6rpx;
+  background-color: #1677ff;
+}
+
+.stat-card.highlight {
+  background-color: rgba(7, 193, 96, 0.05);
+}
+
+.stat-card.highlight::before {
+  background-color: #07c160;
+}
+
+.stat-card.warning {
+  background-color: rgba(250, 173, 20, 0.05);
+}
+
+.stat-card.warning::before {
+  background-color: #faa314;
+}
+
+.stat-card:active {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.stat-label {
+  font-size: 28rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.stat-value {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333;
+  line-height: 1.2;
+}
+
+.stat-card.highlight .stat-value {
+  color: #07c160;
+}
+
+.stat-card.warning .stat-value {
+  color: #faa314;
+}
+
+.stat-desc {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 15rpx;
+}
+
+.stat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #1677ff;
+}
+
+.stat-footer .icon-arrow-right {
+  font-size: 22rpx;
+  margin-left: 8rpx;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:active .stat-footer .icon-arrow-right {
+  transform: translateX(5rpx);
+}
+
+/* 最近动态区域样式 */
+.activities-section {
+  padding: 0 20rpx;
+  margin-top: 10rpx;
+}
+
+.section-header {
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  position: relative;
+  padding-left: 15rpx;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 24rpx;
+  background-color: #1677ff;
+  border-radius: 3rpx;
+}
+
+.activities-list {
+  margin-top: 20rpx;
+}
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20rpx 10rpx;
+  background-color: white;
+  border-radius: 12rpx;
+  margin-bottom: 15rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.03);
+}
+
+.activity-icon {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+}
+
+.icon-add {
+  background-color: rgba(7, 193, 96, 0.1);
+  color: #07c160;
+}
+
+.icon-borrow {
+  background-color: rgba(250, 173, 20, 0.1);
+  color: #faa314;
+}
+
+.icon-return {
+  background-color: rgba(22, 119, 255, 0.1);
+  color: #1677ff;
+}
+
+.activity-icon .iconfont {
+  font-size: 32rpx;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-title {
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.4;
+}
+
+.activity-time {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+  margin-top: 8rpx;
+}
+
+.empty-activities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80rpx 0;
+  background-color: white;
+  border-radius: 12rpx;
+}
+
+.empty-icon {
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+  color: #ddd;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 优化后的悬浮按钮样式 */
+.float-menu {
+  position: fixed;
+  right: 30rpx;
+  bottom: 140rpx; /* 避开底部导航栏 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20rpx;
+  z-index: 998;
+}
+
+/* 主按钮 */
+.main-btn {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #1677ff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40rpx;
+  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.main-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 子菜单 */
+.sub-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20rpx;
+}
+
+.sub-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15rpx;
+  animation: fadeIn 0.3s ease-out forwards;
+  opacity: 0;
+  transform: translateY(10rpx);
+}
+
+/* 子菜单动画延迟，创建层次感 */
+.sub-menu .sub-btn-wrapper:nth-child(1) { animation-delay: 0.1s; }
+.sub-menu .sub-btn-wrapper:nth-child(2) { animation-delay: 0.2s; }
+.sub-menu .sub-btn-wrapper:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sub-btn-circle {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: white;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.sub-btn-circle:active {
+  transform: scale(0.95);
+  background-color: #f5f5f5;
+}
+
+.sub-btn-text {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8rpx 15rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  white-space: nowrap;
+}
+
+/* 底部导航栏增强样式 */
+.tab-bar {
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.tab-bar .wx-tab-bar-item {
+  position: relative;
+}
+
+.tab-bar .wx-tab-bar-item.wx-tab-bar-item--active .wx-tab-bar-item__icon {
+  transform: translateY(-5rpx);
+}
+
+.tab-bar .wx-tab-bar-item.wx-tab-bar-item--active .wx-tab-bar-item__text {
+  color: #1677ff;
+  font-weight: 500;
+}
+    

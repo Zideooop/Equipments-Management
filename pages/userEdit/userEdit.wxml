@@ -1,0 +1,71 @@
+<view class="container">
+  <view class="page-title">编辑个人信息</view>
+  
+  <view class="form-container">
+    <!-- 头像设置 -->
+    <view class="form-item">
+      <text class="label">头像</text>
+      <view class="avatar-container">
+        <image 
+          class="avatar" 
+          src="{{userInfo.avatar || '/images/default-avatar.png'}}"
+          mode="cover"
+        ></image>
+        <button 
+          class="change-avatar-btn" 
+          bindtap="chooseAvatar"
+          size="mini"
+        >
+          更换头像
+        </button>
+      </view>
+    </view>
+    
+    <!-- 用户名 -->
+    <view class="form-item">
+      <text class="label">用户名</text>
+      <input 
+        class="input" 
+        placeholder="请输入用户名" 
+        value="{{username}}"
+        bindinput="onInputChange"
+        data-field="username"
+      ></input>
+    </view>
+    
+    <!-- 手机号码 -->
+    <view class="form-item">
+      <text class="label">手机号码</text>
+      <input 
+        class="input" 
+        placeholder="请输入手机号码" 
+        value="{{phone}}"
+        bindinput="onInputChange"
+        data-field="phone"
+        type="number"
+      ></input>
+    </view>
+    
+    <!-- 邮箱 -->
+    <view class="form-item">
+      <text class="label">邮箱</text>
+      <input 
+        class="input" 
+        placeholder="请输入邮箱地址" 
+        value="{{email}}"
+        bindinput="onInputChange"
+        data-field="email"
+        type="text"
+      ></input>
+    </view>
+  </view>
+  
+  <!-- 保存按钮 -->
+  <button 
+    class="save-btn" 
+    bindtap="saveUserInfo"
+    loading="{{loading}}"
+  >
+    保存修改
+  </button>
+</view>

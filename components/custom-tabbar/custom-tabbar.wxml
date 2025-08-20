@@ -1,0 +1,14 @@
+<view class="tab-bar">
+  <view class="tab-bar-item {{current === 'home' ? 'active' : ''}}" bindtap="switchTab" data-path="/pages/index/index" data-tab="home">
+    <text class="iconfont icon-home"></text>
+    <text class="tab-text">首页</text>
+  </view>
+  <view class="tab-bar-item {{current === 'list' ? 'active' : ''}}" bindtap="switchTab" data-path="/pages/equipmentList/equipmentList" data-tab="list">
+    <text class="iconfont icon-list"></text>
+    <text class="tab-text">列表</text>
+  </view>
+  <view class="tab-bar-item {{current === 'mine' ? 'active' : ''}}" bindtap="switchTab" data-path="/pages/mine/mine" data-tab="mine">
+    <text class="iconfont icon-mine"></text>
+    <text class="tab-text">我的</text>
+  </view>
+</view>

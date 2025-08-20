@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="title">二维码生成器</view>
+  
+  <!-- 输入区域 -->
+  <view class="card">
+    <view class="input-label">请输入二维码内容</view>
+    <textarea 
+      class="input {{hasError ? 'input-error shake' : ''}}"
+      placeholder="支持文字、数字、网址等内容"
+      bindinput="onInputChange"
+      value="{{content}}"
+      bindfocus="clearError"
+      auto-height
+      maxlength="200"
+    ></textarea>
+    <view class="error-message" wx:if="{{hasError}}">
+      <text class="icon-error">⚠️</text>
+      <text>{{errorMessage}}</text>
+    </view>
+  </view>
+  
+  <!-- 控制选项 -->
+  <view class="card">
+    <view class="control-item">
+      <view class="control-label">二维码尺寸</view>
+      <picker mode="selector" value="{{sizeIndex}}" range="{{sizeOptions}}" bindchange="onSizeChange">
+        <view class="picker-view">{{sizeOptions[sizeIndex]}}</view>
+      </picker>
+    </view>
+    
+    <view class="control-item">
+      <view class="control-label">纠错级别</view>
+      <picker mode="selector" value="{{errorLevelIndex}}" range="{{errorLevelOptions}}" bindchange="onErrorLevelChange">
+        <view class="picker-view">{{errorLevelOptions[errorLevelIndex]}}</view>
+      </picker>
+    </view>
+  </view>
+  
+  <!-- 操作按钮 -->
+  <view class="button-group">
+    <button class="btn btn-primary generate-btn" bindtap="generateQrCode">生成二维码</button>
+    <button class="btn btn-text clear-btn" bindtap="clearInput">清空</button>
+  </view>
+  
+  <!-- 二维码显示区域 -->
+  <view class="qrcode-container" wx:if="{{hasGenerated}}">
+    <view class="qrcode-wrapper">
+      <canvas 
+        canvas-id="qrcode" 
+        style="width: {{qrcodeSize}}px; height: {{qrcodeSize}}px;"
+        class="qrcode-canvas"
+      ></canvas>
+      <view class="qrcode-content">{{content}}</view>
+    </view>
+    
+    <view class="action-buttons">
+      <button class="btn btn-secondary save-btn" bindtap="saveQrCode">保存到相册</button>
+      <button class="btn btn-primary scan-btn" bindtap="scanQrCode">扫码识别</button>
+    </view>
+  </view>
+  
+  <!-- 历史记录 -->
+  <view class="card history-section" wx:if="{{historyList.length > 0}}">
+    <view class="history-header">
+      <view class="history-title">历史记录</view>
+      <view class="clear-history" bindtap="clearHistory">清空</view>
+    </view>
+    <view class="history-list">
+      <view 
+        class="history-item" 
+        wx:for="{{historyList}}" 
+        wx:key="index"
+        bindtap="loadHistoryItem"
+        data-index="{{index}}"
+      >
+        <text>{{item}}</text>
+        <text class="icon-history">⌨️</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 提示信息 -->
+  <view class="tips" wx:if="{{!hasGenerated && historyList.length === 0}}">
+    输入内容并点击"生成二维码"按钮开始使用
+  </view>
+</view>

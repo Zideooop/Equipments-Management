@@ -1,0 +1,17 @@
+<!-- components/equipmentCard/equipmentCard.wxml -->
+<view class="equipment-card" bindtap="navigateToDetail">
+  <view class="card-header">
+    <text class="name">{{item.name}}</text>
+    <text class="status {{item.status === '在库' ? 'status-available' : 'status-borrowed'}}">
+      {{item.status}}
+    </text>
+  </view>
+  <view class="card-content">
+    <text class="info">编号：{{item.id}}</text>
+    <text class="info">类型：{{item.type}}</text>
+    <text class="info">最后更新：{{item.updateTime}}</text>
+  </view>
+  <view class="card-actions" bindtap="showActions">
+    <text class="ellipsis">...</text>
+  </view>
+</view>

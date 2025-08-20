@@ -1,0 +1,153 @@
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input">
+      <text class="iconfont icon-search"></text>
+      <input 
+        placeholder="搜索器材名称、编号或规格" 
+        value="{{searchText}}"
+        bindinput="onSearchInput"
+        bindconfirm="onSearchConfirm"
+      />
+      <text class="clear-btn" wx:if="{{searchText}}" bindtap="clearSearch">×</text>
+    </view>
+  </view>
+
+  <!-- 筛选条件 -->
+  <view class="filters">
+    <view class="filter-section">
+      <text class="filter-title">类别:</text>
+      <view class="filter-tags">
+        <view 
+          class="filter-tag {{activeCategory === '' ? 'active' : ''}}"
+          bindtap="selectCategory"
+          data-category=""
+        >
+          全部
+        </view>
+        <view 
+          class="filter-tag {{activeCategory === item ? 'active' : ''}}"
+          bindtap="selectCategory"
+          data-category="{{item}}"
+          wx:for="{{categories}}"
+          wx:key="*this"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="filter-section">
+      <text class="filter-title">状态:</text>
+      <view class="filter-tags">
+        <view 
+          class="filter-tag {{activeStatus === '' ? 'active' : ''}}"
+          bindtap="selectStatus"
+          data-status=""
+        >
+          全部
+        </view>
+        <view 
+          class="filter-tag {{activeStatus === '在库' ? 'active' : ''}}"
+          bindtap="selectStatus"
+          data-status="在库"
+        >
+          在库
+        </view>
+        <view 
+          class="filter-tag {{activeStatus === '借出' ? 'active' : ''}}"
+          bindtap="selectStatus"
+          data-status="借出"
+        >
+          借出
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="selected-filters" wx:if="{{hasFiltered}}">
+    <view class="filter-chip" wx:if="{{activeCategory}}" bindtap="clearCategory">
+      {{activeCategory}} <text class="close-icon">×</text>
+    </view>
+    <view class="filter-chip" wx:if="{{activeStatus}}" bindtap="clearStatus">
+      {{activeStatus}} <text class="close-icon">×</text>
+    </view>
+    <view class="filter-chip" wx:if="{{searchText}}" bindtap="clearSearch">
+      搜索: {{searchText}} <text class="close-icon">×</text>
+    </view>
+    <view class="clear-all" bindtap="clearFilters">清除全部</view>
+  </view>
+
+  <!-- 器材列表 -->
+  <view class="equipment-list">
+    <view 
+      class="equipment-item" 
+      wx:for="{{displayList}}" 
+      wx:key="id"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="item-header">
+        <text class="item-name">{{item.name}}</text>
+        <text class="item-status {{item.status === '在库' ? 'status-in' : 'status-out'}}">
+          {{item.status}}
+        </text>
+      </view>
+      <view class="item-details">
+        <text class="detail-item">编号: {{item.code || '无'}}</text>
+        <text class="detail-item">类型: {{item.type || '未分类'}}</text>
+        <text class="detail-item">规格: {{item.specification || '无'}}</text>
+      </view>
+      <view class="item-footer">
+        <text class="update-time">
+          更新于: {{formatDate(item.updateTime || item.createTime)}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && displayList.length === 0}}">
+    <image src="/images/empty.png" mode="widthFix" class="empty-img"></image>
+    <text class="empty-text">暂无符合条件的器材</text>
+    <button class="add-btn" bindtap="goToAdd">添加器材</button>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <view class="spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+</view>
+    
+<!-- pages/equipmentList/equipmentList.wxml 末尾添加 -->
+<!-- 悬浮功能按钮 -->
+<view class="float-menu">
+  <!-- 子菜单 -->
+  <view class="sub-menu" wx:if="{{isMenuOpen}}">
+    <view class="sub-btn-wrapper">
+      <view class="sub-btn-circle" bindtap="scanCode">
+        <text class="iconfont icon-scan"></text>
+      </view>
+      <text class="sub-btn-text">扫码</text>
+    </view>
+    <view class="sub-btn-wrapper">
+      <view class="sub-btn-circle" bindtap="goToAdd">
+        <text class="iconfont icon-add"></text>
+      </view>
+      <text class="sub-btn-text">录入</text>
+    </view>
+    <view class="sub-btn-wrapper">
+      <view class="sub-btn-circle" bindtap="goToQrcodeGenerator">
+        <text class="iconfont icon-barcode"></text>
+      </view>
+      <text class="sub-btn-text">条码</text>
+    </view>
+  </view>
+  
+  <!-- 主按钮 -->
+  <view class="main-btn" bindtap="toggleMenu">
+    <text class="iconfont {{isMenuOpen ? 'icon-close' : 'icon-plus'}}"></text>
+  </view>
+</view>

@@ -1,0 +1,91 @@
+<view class="container">
+  <view class="page-header">
+    <view class="back-btn" bindtap="goBack">
+      <text class="iconfont icon-arrow-left"></text>
+    </view>
+    <text class="page-title">器材详情</text>
+    <view class="empty-area"></view>
+  </view>
+
+  <view class="equipment-card">
+    <view class="card-header">
+      <text class="equipment-name">{{equipment.name}}</text>
+      <view class="status-badge {{equipment.status === '在库' ? 'in-stock' : 'borrowed'}}">
+        {{equipment.status}}
+      </view>
+    </view>
+    
+    <view class="card-body">
+      <view class="detail-row">
+        <text class="row-label">器材编号</text>
+        <text class="row-value">{{equipment.id}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="row-label">器材类型</text>
+        <text class="row-value">{{equipment.type}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="row-label">规格型号</text>
+        <text class="row-value">{{equipment.specification || '无'}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="row-label">存放位置</text>
+        <text class="row-value">{{equipment.location || '未指定'}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="row-label">数量</text>
+        <text class="row-value">{{equipment.quantity || 1}}</text>
+      </view>
+      <view class="detail-row" wx:if="{{equipment.status === '借出'}}">
+        <text class="row-label">借出时间</text>
+        <text class="row-value">{{equipment.borrowTime || '未知'}}</text>
+      </view>
+      <view class="detail-row" wx:if="{{equipment.status === '在库' && equipment.returnTime}}">
+        <text class="row-label">最近归还</text>
+        <text class="row-value">{{equipment.returnTime}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="row-label">备注信息</text>
+        <text class="row-value">{{equipment.remarks || '无'}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="row-label">录入时间</text>
+        <text class="row-value">{{formatDate(equipment.createTime)}}</text>
+      </view>
+      <view class="detail-row">
+        <text class="row-label">更新时间</text>
+        <text class="row-value">{{formatDate(equipment.updateTime)}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 操作按钮区域 - 优化设计 -->
+  <view class="action-buttons">
+    <!-- 状态操作按钮 - 根据状态显示不同按钮 -->
+    <button 
+      class="{{equipment.status === '在库' ? 'primary-action borrow-btn' : 'primary-action return-btn'}}" 
+      bindtap="{{equipment.status === '在库' ? 'borrowEquipment' : 'returnEquipment'}}"
+    >
+      {{equipment.status === '在库' ? '一键借出' : '一键归还'}}
+    </button>
+    
+    <button class="secondary-action edit-btn" bindtap="editEquipment">
+      <text class="iconfont icon-edit"></text>
+      编辑
+    </button>
+    
+    <button class="secondary-action export-btn" bindtap="exportBarcode">
+      <text class="iconfont icon-barcode"></text>
+      条码
+    </button>
+  </view>
+
+  <!-- 删除按钮 -->
+  <view class="delete-area">
+    <button class="delete-btn" bindtap="deleteEquipment">
+      <text class="iconfont icon-trash"></text>
+      删除器材
+    </button>
+  </view>
+</view>
+    

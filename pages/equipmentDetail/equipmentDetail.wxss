@@ -1,0 +1,217 @@
+/* 页面容器 */
+.container {
+  background-color: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* 页头 */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  background-color: white;
+  border-bottom: 1rpx solid #eee;
+}
+
+.back-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  color: #333;
+}
+
+.page-title {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.empty-area {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+/* 器材卡片 */
+.equipment-card {
+  background-color: white;
+  margin: 20rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* 卡片头部 */
+.card-header {
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.equipment-name {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.status-badge {
+  padding: 8rpx 20rpx;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+}
+
+.status-badge.in-stock {
+  background-color: #e6f7ee;
+  color: #00b42a;
+}
+
+.status-badge.borrowed {
+  background-color: #fff7e8;
+  color: #ff7d00;
+}
+
+/* 卡片内容 */
+.card-body {
+  padding: 20rpx 30rpx;
+}
+
+.detail-row {
+  display: flex;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.row-label {
+  width: 200rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.row-value {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+  word-break: break-all;
+}
+
+/* 操作按钮区域 - 优化设计 */
+.action-buttons {
+  display: flex;
+  gap: 20rpx;
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+}
+
+/* 主操作按钮 */
+.primary-action {
+  flex: 2;
+  height: 90rpx;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* 借出按钮 - 橙色 */
+.borrow-btn {
+  background-color: #ff7d00;
+  color: white;
+}
+
+.borrow-btn:active {
+  background-color: #e66a00;
+  transform: scale(0.98);
+}
+
+/* 归还按钮 - 绿色 */
+.return-btn {
+  background-color: #00b42a;
+  color: white;
+}
+
+.return-btn:active {
+  background-color: #009922;
+  transform: scale(0.98);
+}
+
+/* 次要操作按钮 */
+.secondary-action {
+  flex: 1;
+  height: 90rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+/* 编辑按钮 - 蓝色 */
+.edit-btn {
+  background-color: #1677ff;
+  color: white;
+}
+
+.edit-btn:active {
+  background-color: #0e68e0;
+  transform: scale(0.98);
+}
+
+/* 导出按钮 - 灰色 */
+.export-btn {
+  background-color: #666;
+  color: white;
+}
+
+.export-btn:active {
+  background-color: #555;
+  transform: scale(0.98);
+}
+
+/* 删除按钮区域 */
+.delete-area {
+  padding: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+/* 删除按钮 - 红色 */
+.delete-btn {
+  width: 100%;
+  height: 80rpx;
+  background-color: #f53f3f;
+  color: white;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.delete-btn:active {
+  background-color: #e03232;
+  transform: scale(0.98);
+}
+    

@@ -1,0 +1,171 @@
+<view class="container">
+  <view class="page-title">{{isEditing ? '编辑器材' : '添加器材'}}</view>
+  
+  <form class="form-container">
+    <!-- 编号输入框与扫码按钮组合 -->
+    <view class="form-group inline-group">
+      <view class="form-label">编号</view>
+      <view class="inline-input-group">
+        <input 
+          class="form-input short-input" 
+          placeholder="请输入器材编号" 
+          value="{{formData.id}}"
+          bindinput="onInputChange"
+          data-field="id"
+        />
+        <button 
+          class="scan-btn" 
+          bindtap="scanCodeForId"
+        >
+          <text class="iconfont icon-scan"></text>
+          扫码
+        </button>
+      </view>
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">名称</view>
+      <input 
+        class="form-input" 
+        placeholder="请输入器材名称" 
+        value="{{formData.name}}"
+        bindinput="onInputChange"
+        data-field="name"
+      />
+    </view>
+    
+    <!-- 类型选择器 -->
+    <view class="form-group">
+      <view class="form-label">类型</view>
+      <view class="picker-container">
+        <picker 
+          class="form-picker"
+          mode="selector"
+          range="{{types}}"
+          value="{{types.indexOf(formData.type)}}"
+          bindchange="onTypeChange"
+        >
+          <view class="picker-view">
+            {{formData.type || '请选择器材类型'}}
+            <text class="iconfont icon-arrow-down"></text>
+          </view>
+        </picker>
+        <button 
+          class="add-type-btn" 
+          bindtap="showAddTypeDialog"
+        >
+          <text class="iconfont icon-plus"></text>
+          <text>新增</text>
+        </button>
+      </view>
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">规格</view>
+      <input 
+        class="form-input" 
+        placeholder="请输入器材规格" 
+        value="{{formData.specification}}"
+        bindinput="onInputChange"
+        data-field="specification"
+      />
+    </view>
+    
+    <!-- 状态选择器 -->
+    <view class="form-group">
+      <view class="form-label">状态</view>
+      <radio-group class="status-selector" bindchange="onStatusChange">
+        <label class="status-option {{formData.status === '在库' ? 'active' : ''}}">
+          <radio value="在库" checked="{{formData.status === '在库'}}" />
+          <text>在库</text>
+        </label>
+        <label class="status-option {{formData.status === '借出' ? 'active' : ''}}">
+          <radio value="借出" checked="{{formData.status === '借出'}}" />
+          <text>借出</text>
+        </label>
+      </radio-group>
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">数量</view>
+      <input 
+        class="form-input" 
+        type="number" 
+        placeholder="请输入数量" 
+        value="{{formData.quantity}}"
+        bindinput="onInputChange"
+        data-field="quantity"
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">位置</view>
+      <input 
+        class="form-input" 
+        placeholder="请输入存放位置" 
+        value="{{formData.location}}"
+        bindinput="onInputChange"
+        data-field="location"
+      />
+    </view>
+    
+    <view class="form-group">
+      <view class="form-label">备注</view>
+      <textarea 
+        class="form-textarea" 
+        placeholder="请输入备注信息" 
+        value="{{formData.remarks}}"
+        bindinput="onInputChange"
+        data-field="remarks"
+      ></textarea>
+    </view>
+    
+    <!-- 优化的按钮布局 -->
+    <view class="button-group primary-buttons">
+      <button 
+        class="action-btn reset-btn" 
+        bindtap="confirmReset"
+        disabled="{{submitting}}"
+      >
+        重置
+      </button>
+      <button 
+        class="action-btn submit-btn" 
+        bindtap="submitForm"
+        disabled="{{submitting}}"
+        loading="{{submitting}}"
+      >
+        {{isEditing ? '更新' : '添加'}}
+      </button>
+    </view>
+    
+    <!-- 编辑模式下显示删除按钮，与其他按钮保持一致大小 -->
+    <view wx:if="{{isEditing}}" class="button-group secondary-buttons">
+      <button 
+        class="action-btn delete-btn" 
+        bindtap="deleteEquipment"
+        disabled="{{submitting}}"
+      >
+        <text class="iconfont icon-trash"></text>
+        删除器材
+      </button>
+    </view>
+  </form>
+  
+  <!-- 添加类型弹窗 -->
+  <view class="modal-mask" wx:if="{{showAddTypeDialog}}"></view>
+  <view class="modal-dialog" wx:if="{{showAddTypeDialog}}">
+    <view class="modal-title">添加器材类型</view>
+    <input 
+      class="modal-input" 
+      placeholder="请输入新的器材类型" 
+      value="{{newTypeName}}"
+      bindinput="onNewTypeInput"
+    />
+    <view class="modal-buttons">
+      <button class="modal-btn cancel-btn" bindtap="cancelAddType">取消</button>
+      <button class="modal-btn confirm-btn" bindtap="confirmAddType">确认</button>
+    </view>
+  </view>
+</view>
+    

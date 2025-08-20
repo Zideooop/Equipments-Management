@@ -1,0 +1,104 @@
+<view class="container">
+  <!-- 头部区域 -->
+  <view class="header">
+    <image src="/images/logo.png" mode="widthFix" class="logo"></image>
+    <text class="title">器材管理系统</text>
+  </view>
+
+  <!-- 库存信息展示区 -->
+  <view class="stats-section">
+    <!-- 修复卡片名称并确保跳转功能正常 -->
+    <view class="stat-card" bindtap="goToEquipmentList" data-status="">
+      <text class="stat-label">器材总数</text>
+      <text class="stat-value">{{totalEquipments}}</text>
+      <text class="stat-desc">件</text>
+      <view class="stat-footer">
+        <text>点击查看全部</text>
+        <text class="iconfont icon-arrow-right"></text>
+      </view>
+    </view>
+    <view class="stat-card highlight" bindtap="goToEquipmentList" data-status="在库">
+      <text class="stat-label">当前在库</text>
+      <text class="stat-value">{{availableEquipments}}</text>
+      <text class="stat-desc">件</text>
+      <view class="stat-footer">
+        <text>点击查看在库</text>
+        <text class="iconfont icon-arrow-right"></text>
+      </view>
+    </view>
+    <view class="stat-card warning" bindtap="goToEquipmentList" data-status="借出">
+      <text class="stat-label">已出库</text>
+      <text class="stat-value">{{borrowedEquipments}}</text>
+      <text class="stat-desc">件</text>
+      <view class="stat-footer">
+        <text>点击查看借出</text>
+        <text class="iconfont icon-arrow-right"></text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 最近动态区域 -->
+  <view class="activities-section">
+    <view class="section-header">
+      <text class="section-title">最近动态</text>
+    </view>
+    
+    <view class="activities-list">
+      <!-- 添加点击事件，点击动态卡片跳转至对应器材详情 -->
+      <view 
+        wx:for="{{recentActivities}}" 
+        wx:key="index" 
+        class="activity-item"
+        bindtap="goToActivityDetail"
+        data-equipmentname="{{item.equipmentName}}"
+      >
+        <view class="activity-icon {{item.type === '新增' ? 'icon-add' : item.type === '借出' ? 'icon-borrow' : 'icon-return'}}">
+          <text class="iconfont {{item.type === '新增' ? 'icon-plus-circle' : item.type === '借出' ? 'icon-arrow-right-circle' : 'icon-arrow-left-circle'}}"></text>
+        </view>
+        <view class="activity-content">
+          <text class="activity-title">{{item.content}}</text>
+          <text class="activity-time">{{item.time}}</text>
+        </view>
+      </view>
+      
+      <view wx:if="{{recentActivities.length === 0}}" class="empty-activities">
+        <text class="empty-icon">📋</text>
+        <text class="empty-text">暂无动态记录</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 悬浮功能按钮 -->
+  <view class="float-menu">
+
+  
+    <!-- 子菜单 -->
+    <view class="sub-menu" wx:if="{{isMenuOpen}}">
+      <view class="sub-btn-wrapper">
+        <view class="sub-btn-circle" bindtap="scanCode">
+          <text class="iconfont icon-scan"></text>
+        </view>
+        <text class="sub-btn-text">扫码</text>
+      </view>
+      <view class="sub-btn-wrapper">
+        <view class="sub-btn-circle" bindtap="goToAdd">
+          <text class="iconfont icon-add"></text>
+        </view>
+        <text class="sub-btn-text">录入</text>
+      </view>
+      <view class="sub-btn-wrapper">
+        <view class="sub-btn-circle" bindtap="goToQrcodeGenerator">
+          <text class="iconfont icon-barcode"></text>
+        </view>
+        <text class="sub-btn-text">条码</text>
+      </view>
+    </view>
+    
+    
+    <!-- 主按钮 -->
+    <view class="main-btn" bindtap="toggleMenu">
+      <text class="iconfont {{isMenuOpen ? 'icon-close' : 'icon-plus'}}"></text>
+    </view>
+  </view>
+</view>
+    

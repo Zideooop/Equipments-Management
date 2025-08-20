@@ -1,0 +1,36 @@
+<view class="account-login-container">
+  <view class="nav-bar">
+    <text class="back-btn" bindtap="goBack">← 返回</text>
+    <text class="nav-title">账号登录</text>
+  </view>
+  
+  <view class="login-form">
+    <view class="form-item">
+      <text class="icon">👤</text>
+      <input 
+        type="text" 
+        placeholder="请输入用户名" 
+        bindinput="onUsernameChange"
+        value="{{username}}"
+      />
+    </view>
+    
+    <view class="form-item">
+      <text class="icon">🔒</text>
+      <input 
+        type="password" 
+        placeholder="请输入密码" 
+        bindinput="onPasswordChange"
+        value="{{password}}"
+      />
+    </view>
+    
+    <button class="login-btn" bindtap="submitLogin">登录</button>
+    
+    <view class="form-links">
+      <text class="link" bindtap="forgetPassword">忘记密码？</text>
+      <text class="link" bindtap="register">注册账号</text>
+    </view>
+  </view>
+</view>
+    
