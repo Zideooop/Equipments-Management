@@ -1,0 +1,29 @@
+{
+  "setting": {
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "uglifyFileName": false,
+    "enhance": true,
+    "packNpmRelationList": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useCompilerPlugins": false,
+    "minifyWXML": true,
+    "ignoreUploadUnusedFiles": false
+  },
+  "compileType": "miniprogram",
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "appid": "wxb0056508f50c8c3b",
+  "editorSetting": {},
+  "cloudfunctionRoot": "cloudfunctions/",
+  "cloudEnv": "cloudbase-5gx4izq3da5eda5e",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
+}

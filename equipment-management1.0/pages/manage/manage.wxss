@@ -1,0 +1,229 @@
+/* pages/manage/manage.wxss */
+.page-container {
+  padding: 0;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  background-color: #1890ff;
+  padding: 0 30rpx;
+  color: white;
+  justify-content: center;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 20rpx 30rpx;
+}
+
+.action-btn {
+  width: 45%;
+  height: 60rpx;
+  border-radius: 8rpx;
+  background-color: #1890ff;
+  color: white;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.filter-search-container {
+  padding: 20rpx 30rpx;
+}
+
+.filter-container {
+  background-color: white;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.filter-label {
+  width: 120rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter-option {
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+  border: 1rpx solid #ccc;
+}
+
+.filter-option.active {
+  background-color: #1890ff;
+  color: white;
+  border-color: #1890ff;
+}
+
+.clear-filter-btn {
+  width: 100%;
+  height: 60rpx;
+  border-radius: 8rpx;
+  background-color: #eee;
+  color: #333;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container {
+  background-color: white;
+  border-radius: 8rpx;
+  padding: 15rpx;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.clear-icon {
+  margin-left: 15rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.equipment-list {
+  padding: 0 30rpx;
+}
+
+.equipment-card {
+  background-color: white;
+  border-radius: 8rpx;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.equipment-id {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.equipment-status {
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+}
+
+.status-available {
+  background-color: #e6f7ff;
+  color: #1890ff;
+}
+
+.status-borrowed {
+  background-color: #fff2e8;
+  color: #fa8c16;
+}
+
+.card-content {
+  color: #666;
+}
+
+.equipment-name {
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+}
+
+.equipment-type {
+  font-size: 24rpx;
+}
+
+.card-actions {
+  text-align: right;
+  margin-top: 15rpx;
+}
+
+.delete-btn {
+  background-color: #ff4d4f;
+  color: white;
+  padding: 8rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.add-now-btn {
+  background-color: #1890ff;
+  color: white;
+  padding: 15rpx 30rpx;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-content {
+  background-color: white;
+  border-radius: 8rpx;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.loading-text {
+  font-size: 28rpx;
+  margin-left: 15rpx;
+}

@@ -1,0 +1,232 @@
+/* 批量添加页面样式 */
+.container {
+  padding: 20rpx;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 25rpx 0;
+  border-bottom: 1rpx solid #eee;
+  margin-bottom: 30rpx;
+}
+
+.back-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.back-btn:active {
+  background-color: rgba(22, 119, 255, 0.1);
+}
+
+.back-btn .iconfont {
+  font-size: 36rpx;
+  color: var(--text-primary);
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+/* 引导说明区 */
+.guide {
+  background-color: white;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+}
+
+.guide-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 15rpx;
+  display: block;
+}
+
+.guide-content {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.guide-example {
+  font-size: 24rpx;
+  color: var(--text-tertiary);
+  display: block;
+  margin-bottom: 5rpx;
+  padding-left: 20rpx;
+  position: relative;
+}
+
+.guide-example::before {
+  content: '';
+  position: absolute;
+  left: 5rpx;
+  top: 15rpx;
+  width: 6rpx;
+  height: 6rpx;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+}
+
+/* 表单区域 */
+.form-container {
+  background-color: white;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+}
+
+.batch-input {
+  width: 100%;
+  min-height: 200rpx;
+  border: 1rpx solid #ddd;
+  border-radius: 8rpx;
+  padding: 15rpx;
+  font-size: 26rpx;
+  line-height: 1.6;
+  transition: all 0.2s ease;
+}
+
+.batch-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4rpx rgba(22, 119, 255, 0.1);
+  outline: none;
+}
+
+.preview-btn {
+  width: 100%;
+  height: 85rpx;
+  line-height: 85rpx;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  margin-top: 20rpx;
+  transition: all 0.2s ease;
+}
+
+.preview-btn:active {
+  background-color: #0e68e0;
+  transform: scale(0.98);
+}
+
+/* 预览区域 */
+.preview-area {
+  background-color: white;
+  border-radius: 12rpx;
+  padding: 25rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+}
+
+.preview-title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 20rpx;
+  display: block;
+  padding-bottom: 15rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.preview-table {
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  background-color: rgba(22, 119, 255, 0.05);
+  font-weight: bold;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1rpx solid #f5f5f5;
+  transition: background-color 0.2s ease;
+}
+
+.table-row:active {
+  background-color: rgba(22, 119, 255, 0.03);
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row.invalid {
+  background-color: rgba(255, 77, 79, 0.03);
+}
+
+.table-cell {
+  flex: 1;
+  padding: 15rpx 10rpx;
+  font-size: 26rpx;
+  word-break: break-all;
+}
+
+.table-header .table-cell {
+  color: var(--primary-color);
+  font-size: 26rpx;
+}
+
+.error-tip {
+  color: var(--danger-color);
+  font-size: 24rpx;
+}
+
+/* 批量操作按钮 */
+.batch-actions {
+  display: flex;
+  gap: 20rpx;
+  margin-top: 30rpx;
+}
+
+.cancel-btn {
+  flex: 1;
+  height: 85rpx;
+  line-height: 85rpx;
+  background-color: #f5f5f5;
+  color: #666;
+  border: 1rpx solid #ddd;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:active {
+  background-color: #eee;
+  transform: scale(0.98);
+}
+
+.submit-btn {
+  flex: 1;
+  height: 85rpx;
+  line-height: 85rpx;
+  background-color: var(--secondary-color);
+  color: white;
+  font-size: 30rpx;
+  border-radius: 8rpx;
+  transition: all 0.2s ease;
+}
+
+.submit-btn:active {
+  background-color: #06b054;
+  transform: scale(0.98);
+}

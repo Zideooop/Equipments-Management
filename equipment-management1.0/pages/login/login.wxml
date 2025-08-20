@@ -1,0 +1,63 @@
+<view class="login-container">
+  <!-- 顶部标题区域 -->
+  <view class="login-header">
+    <text class="title">器材管理系统</text>
+    <text class="subtitle">请登录后使用系统功能</text>
+  </view>
+
+  <!-- 微信快捷登录按钮（核心） -->
+  <view class="wechat-login-section">
+    <button 
+      class="wechat-login-btn" 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onWechatAuth"
+      withCredentials="true"
+    >
+      <image class="wechat-icon" src="/images/wechat.png"></image>
+      微信快捷登录
+    </button>
+    <text class="auth-desc">登录即表示同意《用户协议》和《隐私政策》</text>
+  </view>
+
+  <!-- 其他登录方式 -->
+  <view class="divider">其他登录方式</view>
+
+  <!-- 账号密码登录表单 -->
+  <view class="login-form">
+    <!-- 用户名输入 -->
+    <view class="input-item">
+      <text class="icon">👤</text>
+      <input 
+        type="text" 
+        placeholder="请输入用户名" 
+        value="{{username}}"
+        bindinput="onUsernameInput"
+        class="input"
+      />
+    </view>
+
+    <!-- 密码输入 -->
+    <view class="input-item">
+      <text class="icon">🔑</text>
+      <input 
+        type="{{showPassword ? 'text' : 'password'}}" 
+        placeholder="请输入密码" 
+        value="{{password}}"
+        bindinput="onPasswordInput"
+        class="input"
+      />
+      <text class="toggle-btn" bindtap="togglePasswordVisibility">
+        {{showPassword ? '👁️' : '👁️‍🗨️'}}
+      </text>
+    </view>
+
+    <!-- 登录按钮 -->
+    <button 
+      class="login-btn" 
+      bindtap="handleLogin"
+      loading="{{loading}}"
+    >
+      账号登录
+    </button>
+  </view>
+</view>

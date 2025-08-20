@@ -1,0 +1,165 @@
+<view class="container">
+  <view class="page-title">器材筛选管理</view>
+
+  <!-- 优化的筛选区域 -->
+  <view class="advanced-filter">
+    <!-- 搜索框 -->
+    <view class="search-container">
+      <view class="search-input">
+        <text class="iconfont icon-search"></text>
+        <input 
+          type="text" 
+          placeholder="搜索器材编号、名称、类型或存放位置" 
+          value="{{searchKeyword}}"
+          bindinput="onSearchInput"
+          placeholder-style="color:#999"
+        />
+        <text 
+          class="iconfont icon-close" 
+          wx:if="{{searchKeyword}}" 
+          bindtap="clearSearch"
+        ></text>
+      </view>
+    </view>
+
+    <!-- 筛选条件 -->
+    <view class="filter-criteria">
+      <view class="filter-section">
+        <text class="filter-title">器材类型</text>
+        <view class="filter-tags">
+          <view 
+            class="filter-tag {{activeFilters.type === '' ? 'active' : ''}}"
+            bindtap="filterByType"
+            data-type=""
+          >
+            全部
+          </view>
+          <view 
+            class="filter-tag {{activeFilters.type === '拍摄器材' ? 'active' : ''}}"
+            bindtap="filterByType"
+            data-type="拍摄器材"
+          >
+            拍摄器材
+          </view>
+          <view 
+            class="filter-tag {{activeFilters.type === '辅助器材' ? 'active' : ''}}"
+            bindtap="filterByType"
+            data-type="辅助器材"
+          >
+            辅助器材
+          </view>
+          <view 
+            class="filter-tag {{activeFilters.type === '存储卡' ? 'active' : ''}}"
+            bindtap="filterByType"
+            data-type="存储卡"
+          >
+            存储卡
+          </view>
+          <view 
+            class="filter-tag {{activeFilters.type === '硬盘' ? 'active' : ''}}"
+            bindtap="filterByType"
+            data-type="硬盘"
+          >
+            硬盘
+          </view>
+        </view>
+      </view>
+
+      <view class="filter-section">
+        <text class="filter-title">器材状态</text>
+        <view class="filter-tags">
+          <view 
+            class="filter-tag {{activeFilters.status === '' ? 'active' : ''}}"
+            bindtap="filterByStatus"
+            data-status=""
+          >
+            全部
+          </view>
+          <view 
+            class="filter-tag {{activeFilters.status === '在库' ? 'active' : ''}}"
+            bindtap="filterByStatus"
+            data-status="在库"
+          >
+            在库
+          </view>
+          <view 
+            class="filter-tag {{activeFilters.status === '借出' ? 'active' : ''}}"
+            bindtap="filterByStatus"
+            data-status="借出"
+          >
+            借出
+          </view>
+          <view 
+            class="filter-tag {{activeFilters.status === '维修' ? 'active' : ''}}"
+            bindtap="filterByStatus"
+            data-status="维修"
+          >
+            维修
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 筛选操作按钮 -->
+    <view class="filter-actions">
+      <button 
+        class="reset-btn" 
+        bindtap="clearAllFilters"
+      >
+        <text class="iconfont icon-refresh"></text> 清除全部筛选
+      </button>
+      <button 
+        class="apply-btn" 
+        bindtap="applyFilters"
+      >
+        应用筛选
+      </button>
+    </view>
+  </view>
+
+  <!-- 筛选结果统计 -->
+  <view class="filter-result-stats" wx:if="{{displayList.length > 0}}">
+    筛选结果：共 {{displayList.length}} 条器材
+  </view>
+
+  <!-- 器材列表 -->
+  <view class="equipment-grid" wx:if="{{displayList.length > 0}}">
+    <view 
+      class="equipment-card" 
+      wx:for="{{displayList}}" 
+      wx:key="id"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+      <view class="card-header">
+        <text class="card-title">{{item.name}}</text>
+        <text class="card-id">编号: {{item.id}}</text>
+      </view>
+      <view class="card-body">
+        <text class="card-info">类型: {{item.type}}</text>
+        <text class="card-info">位置: {{item.location || '未设置'}}</text>
+      </view>
+      <view class="card-footer">
+        <text class="status-tag status-{{item.status === '在库' ? 'in' : 'out'}}">
+          {{item.status}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 无结果状态 -->
+  <view class="no-result" wx:if="{{displayList.length === 0 && hasFiltered}}">
+    <image src="/images/no_result.png" mode="widthFix" class="no-result-img"></image>
+    <text class="no-result-text">没有找到符合条件的器材</text>
+    <button class="reset-btn" bindtap="clearAllFilters">
+      清除筛选条件
+    </button>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{isLoading}}">
+    <van-loading type="spinner" color="#1677ff" />
+    <text>加载中...</text>
+  </view>
+</view>
+    

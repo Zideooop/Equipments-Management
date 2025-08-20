@@ -1,0 +1,16 @@
+{
+  "name": "batchsaveequipment",
+  "version": "1.0.0",
+  "description": "批量保存器材数据",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "^3.0.1"
+  },
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "devDependencies": {}
+}

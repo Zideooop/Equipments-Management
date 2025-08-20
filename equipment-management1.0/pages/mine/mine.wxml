@@ -1,0 +1,114 @@
+<view class="container">
+  <!-- 用户信息头部区域 -->
+  <view class="user-header">
+    <view class="user-avatar-container">
+      <view class="avatar-wrapper">
+        <icon 
+          type="user" 
+          size="80" 
+          color="{{isLogin ? '#1677ff' : '#ccc'}}"
+          wx:if="{{!userInfo.avatar}}"
+        ></icon>
+        <image 
+          src="{{userInfo.avatar}}" 
+          mode="cover" 
+          class="avatar"
+          wx:else
+        ></image>
+      </view>
+    </view>
+    
+    <view class="user-info-container">
+      <view class="user-main-info">
+        <text class="username">{{userInfo.username || userInfo.nickname || '未登录'}}</text>
+        <view class="user-role" wx:if="{{isLogin}}">
+          <text>{{userInfo.role || '普通用户'}}</text>
+        </view>
+      </view>
+      
+      <view class="user-actions">
+        <button 
+          class="login-btn" 
+          wx:if="{{!isLogin}}"
+          bindtap="goToLogin"
+        >
+          登录
+        </button>
+        <button 
+          class="edit-btn" 
+          wx:if="{{isLogin}}"
+          bindtap="goToUserEdit"
+        >
+          编辑资料
+        </button>
+        <button 
+          class="logout-btn" 
+          wx:if="{{isLogin}}"
+          bindtap="logout"
+        >
+          退出
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单区域 -->
+  <view class="menu-section">
+    <text class="section-title">功能菜单</text>
+    
+    <view class="menu-grid">
+      <!-- 第一行菜单 -->
+      <view class="menu-item" bindtap="goToMyEquipments">
+        <view class="menu-icon">
+          <icon type="list" size="36" color="#1677ff"></icon>
+        </view>
+        <text class="menu-text">我的器材</text>
+      </view>
+      
+      <view class="menu-item" bindtap="goToBorrowRecord">
+        <view class="menu-icon">
+          <icon type="clock" size="36" color="#ff7d00"></icon>
+        </view>
+        <text class="menu-text">借阅记录</text>
+      </view>
+      
+      <view class="menu-item" bindtap="goToMessage">
+        <view class="menu-icon">
+          <icon type="info" size="36" color="#00b42a"></icon>
+        </view>
+        <text class="menu-text">消息通知</text>
+        <view class="badge" wx:if="{{unreadCount > 0}}">{{unreadCount}}</view>
+      </view>
+    </view>
+    
+    <!-- 第二行菜单 -->
+    <view class="menu-grid">
+      <view class="menu-item" bindtap="clearCache">
+        <view class="menu-icon">
+          <icon type="clear" size="36" color="#f53f3f"></icon>
+        </view>
+        <text class="menu-text">清除缓存</text>
+        <text class="menu-subtext">{{cacheSize}}</text>
+      </view>
+      
+      <view class="menu-item" bindtap="goToSettings">
+        <view class="menu-icon">
+          <icon type="setting" size="36" color="#722ed1"></icon>
+        </view>
+        <text class="menu-text">系统设置</text>
+      </view>
+      
+      <view class="menu-item" bindtap="showAbout">
+        <view class="menu-icon">
+          <icon type="help" size="36" color="#86909c"></icon>
+        </view>
+        <text class="menu-text">关于我们</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部区域 -->
+  <view class="footer">
+    <text class="copyright">© 2025 器材管理系统 v1.0.0</text>
+  </view>
+</view>

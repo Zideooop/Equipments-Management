@@ -1,0 +1,53 @@
+/* components/equipmentCard/equipmentCard.wxss */
+.equipment-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.status-available {
+  background-color: #e6f7ff;
+  color: #1890ff;
+}
+
+.status-borrowed {
+  background-color: #fff2e8;
+  color: #fa8c16;
+}
+
+.card-content {
+  color: #666;
+}
+
+.info {
+  margin-bottom: 4px;
+}
+
+.card-actions {
+  text-align: right;
+}
+
+.ellipsis {
+  font-size: 24px;
+  cursor: pointer;
+}
